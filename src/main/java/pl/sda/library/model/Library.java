@@ -4,18 +4,19 @@ import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
 import java.util.*;
 
-public class Library {
-  private  List<Book> books;
+public class Library< T extends Book > {
+    private List<T> books;
 
-    public List<Book> getBooks() {
+    public List<T> getBooks() {
         return Collections.unmodifiableList(books);
     }
 
-    public void setBooks(List<Book> books) {
+    public void setBooks(List<T> books) {
         this.books = new LinkedList<>(books);
     }
-    public void addBook(Book book){
-        if ( books==null){
+
+    public void addBook(T book) {
+        if (books == null) {
             books = new LinkedList<>();
         }
         books.add(book);
