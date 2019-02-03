@@ -1,5 +1,7 @@
 package pl.sda.library.model;
 
+import java.util.Optional;
+
 public class AudioBookBuilder {
     private String authorFirstName;
     private String authorLastName;
@@ -33,7 +35,10 @@ public class AudioBookBuilder {
               author.setLastName(authorLastName);
              book.setAuthor(author);
             book.setTitle(title);
-              book.setFormat(format);
+        Optional<Format> optionalFormat = Optional.ofNullable(this.format);
+        book.setFormat(optionalFormat.orElse(Format.MP3));
+
+
             return book;
     }
 

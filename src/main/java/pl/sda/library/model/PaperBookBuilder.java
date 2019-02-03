@@ -1,5 +1,7 @@
 package pl.sda.library.model;
 
+import java.util.Optional;
+
 public class PaperBookBuilder {
 
     private String authorFirstName;
@@ -34,8 +36,9 @@ public class PaperBookBuilder {
         author.setLastName(authorLastName);
         book.setAuthor(author);
         book.setTitle(title);
-        book.setCover(cover);
-        return book;
+        Optional<Cover> coverOptional = Optional.ofNullable(this.cover);
+        book.setCover(coverOptional.orElse(Cover.SOFT));
+               return book;
     }
 
 }
