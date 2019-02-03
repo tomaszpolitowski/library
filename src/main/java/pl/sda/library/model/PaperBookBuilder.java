@@ -1,33 +1,41 @@
 package pl.sda.library.model;
 
-public  final class BookBuilder {
+public class PaperBookBuilder {
+
     private String authorFirstName;
     private String authorLastName;
     private String title;
+    private Cover cover;
 
-    public BookBuilder authorFirstName(String authorFirstName) {
+    public PaperBookBuilder authorFirstName(String authorFirstName) {
         this.authorFirstName = authorFirstName;
         return this;
-
     }
 
-    public BookBuilder authorLastName(String authorLastNameName) {
-        this.authorLastName = authorLastNameName;
+    public PaperBookBuilder authorLastName(String authorLastName) {
+        this.authorLastName = authorLastName;
         return this;
     }
 
-    public BookBuilder title(String title) {
+    public PaperBookBuilder title(String title) {
         this.title = title;
         return this;
     }
 
-    public Book build() {
-        Book book = new Book();
+    public PaperBookBuilder cover(Cover cover) {
+        this.cover = cover;
+        return this;
+    }
+
+    public PaperBook build() {
+        PaperBook book = new PaperBook();
         Author author = new Author();
         author.setFirstName(authorFirstName);
         author.setLastName(authorLastName);
         book.setAuthor(author);
         book.setTitle(title);
+        book.setCover(cover);
         return book;
     }
+
 }

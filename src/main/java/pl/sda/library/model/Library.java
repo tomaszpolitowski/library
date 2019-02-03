@@ -5,7 +5,7 @@ import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import java.util.*;
 
 public class Library {
-  private  List<Book> books;
+    private List<Book> books;
 
     public List<Book> getBooks() {
         return Collections.unmodifiableList(books);
@@ -14,8 +14,9 @@ public class Library {
     public void setBooks(List<Book> books) {
         this.books = new LinkedList<>(books);
     }
-    public void addBook(Book book){
-        if ( books==null){
+
+    public void addBook(Book book) {
+        if (books == null) {
             books = new LinkedList<>();
         }
         books.add(book);
