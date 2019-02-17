@@ -3,13 +3,15 @@ package pl.sda.library.model;
 
 import java.util.Objects;
 
+import java.util.Objects;
+
 public class PaperBook extends Book implements PaperMedium {
 
     PaperBook() {
     }
 
     private Cover cover;
-    private  int pageCount;
+    private int pageCount;
 
     public Cover getCover() {
         return cover;
@@ -19,6 +21,13 @@ public class PaperBook extends Book implements PaperMedium {
         this.cover = cover;
     }
 
+    @Override public int getPageCount() {
+        return pageCount;
+    }
+
+    @Override public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
 
     @Override public boolean equals(Object o) {
         if (this == o) {
@@ -42,13 +51,4 @@ public class PaperBook extends Book implements PaperMedium {
         return "PaperBook{" + "author=" + author + ", title='" + title + '\'' + "cover=" + cover.getName() + '}';
     }
 
-    @Override
-    public int getPageCount() {
-        return 0;
-    }
-
-    @Override
-    public void setPageCount(int pageCount) {
-
-    }
 }
