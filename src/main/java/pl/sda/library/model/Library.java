@@ -1,44 +1,46 @@
 package pl.sda.library.model;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 
-import java.util.*;
+public class Library<T extends Medium> {
 
-public class Library< T extends Book > {
-    private List<T> books;
+    private List<T> media;
 
-    public List<T> getBooks() {
-        return Collections.unmodifiableList(books);
+    public List<T> getMedia() {
+        return Collections.unmodifiableList(media);
     }
 
-    public void setBooks(List<T> books) {
-        this.books = new LinkedList<>(books);
+    public void setMedia(List<T> media) {
+        this.media = new LinkedList<>(media);
     }
 
-    public void addBook(T book) {
-        if (books == null) {
-            books = new LinkedList<>();
+    public void addMedium(T medium) {
+        if (media == null) {
+            media = new LinkedList<>();
         }
-        books.add(book);
+        media.add(medium);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    @Override public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Library library = (Library) o;
-        return Objects.equals(books, library.books);
+        return Objects.equals(media, library.media);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(books);
+    @Override public int hashCode() {
+        return Objects.hash(media);
     }
 
-    @Override
-    public String toString() {
-        return "Library{" +
-                "books=" + books +
-                '}';
+    @Override public String toString() {
+        return "Library{" + "media=" + media + '}';
     }
+
 }
