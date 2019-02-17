@@ -1,10 +1,12 @@
 package pl.sda.library.model;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 
-import java.util.*;
+public class Library<T extends Book> {
 
-public class Library< T extends Book > {
     private List<T> books;
 
     public List<T> getBooks() {
@@ -22,23 +24,23 @@ public class Library< T extends Book > {
         books.add(book);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    @Override public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Library library = (Library) o;
         return Objects.equals(books, library.books);
     }
 
-    @Override
-    public int hashCode() {
+    @Override public int hashCode() {
         return Objects.hash(books);
     }
 
-    @Override
-    public String toString() {
-        return "Library{" +
-                "books=" + books +
-                '}';
+    @Override public String toString() {
+        return "Library{" + "books=" + books + '}';
     }
+
 }

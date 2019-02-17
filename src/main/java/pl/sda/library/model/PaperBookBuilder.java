@@ -31,14 +31,15 @@ public class PaperBookBuilder {
 
     public PaperBook build() {
         PaperBook book = new PaperBook();
-        Author author = new Author();
+        Creator author = new Creator();
         author.setFirstName(authorFirstName);
         author.setLastName(authorLastName);
         book.setAuthor(author);
         book.setTitle(title);
-        Optional<Cover> coverOptional = Optional.ofNullable(this.cover);
-        book.setCover(coverOptional.orElse(Cover.SOFT));
-               return book;
+        book.setCover(Optional//
+                .ofNullable(this.cover)//
+                .orElse(Cover.SOFT));
+        return book;
     }
 
 }
