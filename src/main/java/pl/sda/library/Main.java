@@ -1,6 +1,8 @@
 package pl.sda.library;
 
 import pl.sda.library.command.Command;
+import pl.sda.library.command.DisplayMultimediaCommand;
+import pl.sda.library.command.FilterByTypeComand;
 import pl.sda.library.model.AudioBookBuilder;
 import pl.sda.library.model.Cover;
 import pl.sda.library.model.Format;
@@ -21,16 +23,15 @@ public class Main {
         Library<Medium> library = createLibrary();
         Scanner scanner = new Scanner(System.in);
         Map<String, Command> commands = new HashMap<>();
-        while(true){
-            System.out.println("podaj komendę: ");
+        commands.put("exit", () -> System.exit(0));
+        commands.put("display", new DisplayMultimediaCommand(library, System.out));
+        commands.put("filter", new FilterByTypeComand(library, System.out));
+        while (true) {
+            System.out.println("Podaj komendę:");
             String commandName = scanner.nextLine();
             Command command = commands.get(commandName);
             Optional.ofNullable(command).ifPresent(Command::execute);
-            commands.put("exit",()-> System.exit(0));
-
         }
-
-
     }
 
     private static Library<Medium> createLibrary() {
