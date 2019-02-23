@@ -22,11 +22,13 @@ public class FilterByTypeComand implements Command {
         Scanner scanner = new Scanner(System.in);
         printStream.println("Typ: ");
         String type = scanner.nextLine();
-        for(Medium medium: library.getMedia()){
-            if(medium.getClass().getSimpleName().equals(type)){
-                printStream.println(medium);
-            }
-        }
+
+         library.getMedia().stream().filter(x->x.getType().equals(type)).forEach(printStream::println);
+      //  for (Medium medium : library.getMedia()) {
+        //    if (medium.getClass().getSimpleName().equals(type)) {
+          //      printStream.println(medium);
+            //}
+        //}
 
     }
 }
