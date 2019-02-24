@@ -3,32 +3,42 @@ package pl.sda.library.command;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pl.sda.library.model.*;
+import pl.sda.library.model.AudioBook;
+import pl.sda.library.model.AudioBookBuilder;
+import pl.sda.library.model.Cover;
+import pl.sda.library.model.Format;
+import pl.sda.library.model.Library;
+import pl.sda.library.model.Magazine;
+import pl.sda.library.model.MagazineBuilder;
+import pl.sda.library.model.Medium;
+import pl.sda.library.model.Movie;
+import pl.sda.library.model.MovieBuilder;
+import pl.sda.library.model.PaperBook;
+import pl.sda.library.model.PaperBookBuilder;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 public class CreateMultimediaCommandTest {
 
-    public static final String TEST_AUDIO_BOOK_INPUT = "AudioBook\nW pustyni i w puszczy\nHenryk\nSienkiewicz\nMP3\n100\n";
-    public static final String TEST_PAPER_BOOK_INPUT = "PaperBook\nW pustyni i w puszczy\nHenryk\nSienkiewicz\nHARD\n300\n";
-    public static final String TEST_MOVIE_INPUT = "Movie\nCzłowiek z żelaza\nAndrzej\nWajda\n120\n";
-    public static final String TEST_MAGAZINE_INPUT = "Newspaper\nProgramista\n10\n100\n";
+    private static final String TEST_AUDIO_BOOK_INPUT = "AudioBook\nW pustyni i w puszczy\nHenryk\nSienkiewicz\nMP3\n100\n";
+    private static final String TEST_PAPER_BOOK_INPUT = "PaperBook\nW pustyni i w puszczy\nHenryk\nSienkiewicz\nHARD\n300\n";
+    private static final String TEST_MOVIE_INPUT = "Movie\nCzłowiek z żelaza\nAndrzej\nWajda\n120\n";
+    private static final String TEST_MAGAZINE_INPUT = "Magazine\nProgramista\n10\n100\n";
+
     private InputStream inputStream;
 
-    @Before
-    public void setUp() {
+    @Before public void setUp() {
         inputStream = System.in;
-        System.setIn(new ByteArrayInputStream(TEST_AUDIO_BOOK_INPUT.getBytes())); //CTRL+ALT+C
     }
 
-    @After
-    public void tearDown() {
+    @After public void tearDown() {
         System.setIn(inputStream);
     }
 
@@ -83,7 +93,7 @@ public class CreateMultimediaCommandTest {
         verify(printStreamMock, times(1)).println("Imię autora:");
         verify(printStreamMock, times(1)).println("Nazwisko autora:");
         verify(printStreamMock, times(1)).println("Okładka:");
-        verify(printStreamMock, times(1)).println("Liczbę stron:");
+        verify(printStreamMock, times(1)).println("Liczba stron:");
     }
 
     @Test public void shouldCreateMovieWhenMovieTypeWasTyped() {
@@ -133,4 +143,5 @@ public class CreateMultimediaCommandTest {
         verify(printStreamMock, times(1)).println("Numer:");
         verify(printStreamMock, times(1)).println("Liczba stron:");
     }
+
 }
