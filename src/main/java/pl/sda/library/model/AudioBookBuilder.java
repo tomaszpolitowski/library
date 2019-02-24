@@ -46,6 +46,7 @@ public class AudioBookBuilder {
                 .ofNullable(format)//
                 .orElse(Format.MP3));
         book.setDuration(duration);
+        book.setState(new ReturnedState(System.out));
         return book;
     }
 

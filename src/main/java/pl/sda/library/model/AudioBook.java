@@ -44,8 +44,14 @@ public class AudioBook extends Book implements DigitalMedium {
         return Objects.hash(super.hashCode(), format, duration);
     }
 
-    @Override public String toString() {
-        return "AudioBook{" + "format=" + format + ", duration=" + duration + ", author=" + author + ", title='" + title + '\'' + '}';
+    @Override
+    public String toString() {
+        return "AudioBook{" +
+                "format=" + format +
+                ", duration=" + duration +
+                ", author=" + author +
+                ", title='" + title + '\'' +
+                ", state=" + state +
+                '}';
     }
-
 }

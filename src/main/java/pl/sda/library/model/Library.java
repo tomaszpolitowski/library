@@ -23,23 +23,23 @@ public class Library<T extends Medium> {
         media.add(medium);
     }
 
-    @Override public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Library library = (Library) o;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Library<?> library = (Library<?>) o;
         return Objects.equals(media, library.media);
     }
 
-    @Override public int hashCode() {
+    @Override
+    public int hashCode() {
         return Objects.hash(media);
     }
 
-    @Override public String toString() {
-        return "Library{" + "media=" + media + '}';
+    @Override
+    public String toString() {
+        return "Library{" +
+                "media=" + media +
+                '}';
     }
-
 }

@@ -47,8 +47,14 @@ public class PaperBook extends Book implements PaperMedium {
         return Objects.hash(super.hashCode(), cover);
     }
 
-    @Override public String toString() {
-        return "PaperBook{" + "author=" + author + ", title='" + title + '\'' + "cover=" + cover.getName() + '}';
+    @Override
+    public String toString() {
+        return "PaperBook{" +
+                "cover=" + cover +
+                ", pageCount=" + pageCount +
+                ", author=" + author +
+                ", title='" + title + '\'' +
+                ", state=" + state +
+                '}';
     }
-
 }
