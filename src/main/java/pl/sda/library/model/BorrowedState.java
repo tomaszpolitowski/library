@@ -2,7 +2,7 @@ package pl.sda.library.model;
 import java.io.PrintStream;
 import java.util.Objects;
 
-class BorrowedState implements MediumState {
+public class BorrowedState implements MediumState {
 
     private final PrintStream printStream;
 
@@ -12,6 +12,8 @@ class BorrowedState implements MediumState {
     public BorrowedState(PrintStream printStream) {
         this.printStream = printStream;
     }
+
+
 
     @Override public MediumState borrowMedium(String firstName, String lastName) {
         printStream.println("Książka już jest wypożyczona");

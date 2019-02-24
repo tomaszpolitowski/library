@@ -2,7 +2,7 @@ package pl.sda.library.model;
 import java.io.PrintStream;
 import java.util.Objects;
 
-class ReturnedState implements MediumState {
+public class ReturnedState implements MediumState {
 
     private final PrintStream printStream;
 
