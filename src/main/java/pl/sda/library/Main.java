@@ -1,6 +1,7 @@
 package pl.sda.library;
 
 import pl.sda.library.command.Command;
+import pl.sda.library.command.CreateMultimediaCommand;
 import pl.sda.library.command.DisplayMultimediaCommand;
 import pl.sda.library.command.FilterByTypeComand;
 import pl.sda.library.model.AudioBookBuilder;
@@ -20,12 +21,13 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Library<Medium> library = createLibrary();
+        Library<Medium> library = new Library<>();
         Scanner scanner = new Scanner(System.in);
         Map<String, Command> commands = new HashMap<>();
         commands.put("exit", () -> System.exit(0));
         commands.put("display", new DisplayMultimediaCommand(library, System.out));
         commands.put("filter", new FilterByTypeComand(library, System.out));
+        commands.put("create", new CreateMultimediaCommand(library,System.out));
         while (true) {
             System.out.println("Podaj komendę:");
             String commandName = scanner.nextLine();

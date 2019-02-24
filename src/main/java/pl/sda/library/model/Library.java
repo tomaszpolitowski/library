@@ -7,20 +7,19 @@ import java.util.Objects;
 
 public class Library<T extends Medium> {
 
-    private List<T> media;
+    private List<T> media = new LinkedList<>();
 
     public List<T> getMedia() {
         return Collections.unmodifiableList(media);
     }
 
     public void setMedia(List<T> media) {
+        assert media!=null;
         this.media = new LinkedList<>(media);
     }
 
     public void addMedium(T medium) {
-        if (media == null) {
-            media = new LinkedList<>();
-        }
+
         media.add(medium);
     }
 
